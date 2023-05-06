@@ -1,0 +1,152 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">{{route.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form>
+       <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Nome</label><small>*</small>
+              <input required type="text" name="name" class="form-control" placeholder="Nome" value="{{congressData.name}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Data de início</label><small>*</small>
+              <input required type="datetime-local" name="date" class="form-control" value="{{congressData.date}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Data de Termino</label><small>*</small>
+              <input required type="datetime-local" name="dateEnd" class="form-control" value="{{congressData.dateEnd}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Terá endereço? </label><br>
+              <label class="switch">
+                <input name="bol_address" type="checkbox" {{#if congressData.bol_address}} checked {{/if}} disabled>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="address" class="row" {{#if congressData.bol_address}} {{else}} style="display: none;" {{/if}} >
+          <div class="col-md-12">
+            <div class="card">
+              <div class="header">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <h4 class="title ">Endereço</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">CEP</label><small>*</small>
+                      <input disabled required type="text" name="address[cep]" class="form-control" placeholder="CEP" value="{{addressData.cep}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Estado</label><small>*</small>
+                      <input disabled required type="text" name="address[state]" class="form-control" placeholder="Estado" value="{{addressData.state}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Cidade</label><small>*</small>
+                      <input disabled required type="text" name="address[city]" class="form-control" placeholder="Cidade" value="{{addressData.city}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Bairro</label><small>*</small>
+                      <input disabled required type="text" name="address[district]" class="form-control" placeholder="Bairro" value="{{addressData.district}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Logradouro</label><small>*</small>
+                      <input disabled required type="text" name="address[street]" class="form-control" placeholder="Logradouro" value="{{addressData.street}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="required" for="">Número</label><small>*</small>
+                      <input disabled required type="text" name="address[number]" class="form-control required" placeholder="Número" value="{{addressData.number}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Complemento</label>
+                      <input disabled type="text" name="address[complement]" class="form-control" placeholder="Complemento" value="{{addressData.complement}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Refêrencia</label>
+                      <input disabled type="text" name="address[reference]" class="form-control" placeholder="Refêrencia" value="{{addressData.reference}}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Descrição</label>
+              <textarea required rows="5" type="text" name="description" class="form-control" disabled>{{congressData.description}}</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Página do congresso:</label>
+              <a href="../eventos/congresso/{{congressData.id}}" target="_blank">Link</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-xs-6 col-sm-3">
+              <a target="" href="{{route.route}}"><button type="button" class="btn btn-default btn-block">Voltar</button></a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

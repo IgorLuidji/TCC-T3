@@ -1,0 +1,101 @@
+<div class="col-md-10 col-md-push-1">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title">{{dataCongress.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="col-md-7">
+        <div class="card">
+          <div class="header">
+            <h3 class="title">Informações</h3>
+          </div>
+          <div class="content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-info">
+                  <h4>Descrição </h4>
+                  <p>
+                    {{dataCongress.description}}
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-info">
+                  <h4>Horários </h4>
+                  <p>
+                    Início: {{dataCongress.date}}
+                  </p>
+                  <p>
+                    Termino: {{dataCongress.dateEnd}}
+                  </p>
+                </div>
+              </div>
+              {{#if dataCongress.bol_address}}
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-info">
+                  <h4>Endereço </h4>
+                  {{#if addressData.cep}}
+                  <p>CEP: {{addressData.cep}}</p>
+                  {{/if}}
+                  {{#if addressData.state}}
+                  <p>Estado: {{addressData.state}}</p>
+                  {{/if}}
+                  {{#if addressData.city}}
+                  <p>Cidade: {{addressData.city}}</p>
+                  {{/if}}
+                  {{#if addressData.district}}
+                  <p>Bairro: {{addressData.district}}</p>
+                  {{/if}}
+                  {{#if addressData.street}}
+                  <p>Logradouro: {{addressData.street}}</p>
+                  {{/if}}
+                  {{#if addressData.number}}
+                  <p>Número: {{addressData.number}}</p>
+                  {{/if}}
+                  {{#if addressData.complement}}
+                  <p>Complemento: {{addressData.complement}}</p>
+                  {{/if}}
+                  {{#if addressData.reference}}
+                  <p>Refêrencia: {{addressData.reference}}</p>
+                  {{/if}}
+                </div>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card">
+          <div class="header">
+            <h3 class="title">Eventos</h3>
+          </div>
+          <div class="content">
+            <div class="row">
+              {{#each events}}
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-primary">
+                  <h4>{{this.name}}</h4>
+                  <small>{{this.date}} - {{this.dateEnd}}</small>
+                  <div class="row" style="margin-top: 1%;">
+                    <div class="pull-right">
+                      <a href="{{../route.route}}/congresso/{{../dataCongress.id}}/pagina/{{this.id}}"><button type="button" class="btn btn-primary btn-block"><span>Ver detalhes</span></button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

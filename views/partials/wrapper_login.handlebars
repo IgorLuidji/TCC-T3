@@ -1,0 +1,34 @@
+<div class="wrapper vcenter-item">
+    <div class="container-fluid login-card">
+        <div class="row">
+            <div class="col-md-6 col-md-push-3 text-center">
+            <h3>Sistema de Eventos</h3>
+            </div>
+        </div>
+        <div class="row">
+            {{#if messages.message}}
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <div class="card">
+                        <div class="alert alert-danger">
+                            <span>{{messages.message}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if message}}
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <div class="card">
+                        <div class="alert alert-danger">
+                            <span>{{message}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{{body}}}
+        </div>
+    </div>
+</div>

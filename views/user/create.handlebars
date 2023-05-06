@@ -1,0 +1,80 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">Criar {{route.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form action="{{route.route}}/novo" method="post">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Nome</label><small>*</small>
+              <input required type="text" name="firstName" class="form-control" placeholder="Nome"
+                value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Sobrenome</label><small>*</small>
+              <input required type="text" name="lastName" class="form-control" placeholder="Sobrenome"
+                value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">E-mail</label><small>*</small>
+              <input required type="email" name="email" class="form-control" placeholder="E-mail"
+                value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Senha</label><small>*</small>
+              <input required type="password" minlength="8" name="password" class="form-control" placeholder="Senha" value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nascimento</label><small>*</small>
+              <input required type="date" name="birthDate" class="form-control" value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Perfil</label>
+              <select required class="form-control" name="profile_cod" >
+              {{#each listProfile}}
+                <option value="{{this.id}}">{{this.name}}</option>
+              {{/each}}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-xs-6 col-sm-3">
+              <a target="" href="{{route.route}}"><button type="button" class="btn btn-default btn-block">Cancelar</button></a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-push-6">
+              <button type="submit" class="btn btn-info btn-fill btn-block">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

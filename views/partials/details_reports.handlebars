@@ -1,0 +1,195 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="header">
+        <h4 class="title">Avaliações</h4>
+      </div>
+      <div class="content">
+        <div id="chartAvaliacao" class="ct-chart ct-perfect-fourth"></div>
+        <div class="footer">
+          <div class="legend">
+            <i class="fa fa-circle text-info"></i>
+            <span class="fa fa-star"></span><br>
+            <i class="fa fa-circle text-danger"></i>
+            <span class="fa fa-star"></span><span class="fa fa-star"></span><br>
+            <i class="fa fa-circle text-warning"></i>
+            <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><br>
+            <i class="fa fa-circle text-four"></i>
+            <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span
+              class="fa fa-star"></span><br>
+            <i class="fa fa-circle text-success"></i>
+            <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span
+              class="fa fa-star"></span><span class="fa fa-star"></span><br>
+          </div>
+          <hr>
+          <div class="stats">
+            <i class="fa fa-pie-chart"></i> Total de avaliações: {{dataReports.assessment.total}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card ">
+      <div class="header">
+        <h4 class="title">Números</h4>
+      </div>
+      <div class="content">
+        <div id="chartSub" class=""></div>
+
+        <div class="footer">
+          <div class="legend">
+            <i class="fa fa-circle text-info"></i> Vagas
+            <i class="fa fa-circle text-danger"></i> Inscrições
+            <i class="fa fa-circle text-warning"></i> Inscrições Confirmadas
+            <i class="fa fa-circle text-four"></i> Participações
+          </div>
+        </div>
+        <hr>
+          <div class="stats">
+            <i class="fa fa-bar-chart"></i> Eventos: 
+            {{#each dataReports.subscription}}
+              <br><small>{{this.EventId}} - {{this.nameEvent}}</small>
+            {{/each}}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{#if eventSelect}}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="header">
+        <h4 class="title">Comentários</h4>
+      </div>
+      <div class="content">
+        <div class="row">
+          {{#each dataReports.comment}}
+          <div class="col-md-6">
+            <div class="card">
+              <div class="header">
+                <small class="pull-right" >{{this.createdAt}}</small>
+                <h5 class="title">{{this.nameUser}}</h5>
+              </div>
+              <div class="content">
+                <div class="typo-line">
+                  <p class="category">
+                    Nota: 
+                    {{#if this.grade1}}
+                    <span class="fa fa-star"></span>
+                    {{/if}}
+                    {{#if this.grade2}}
+                    <span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    {{/if}}
+                    {{#if this.grade3}}
+                    <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    {{/if}}
+                    {{#if this.grade4}}
+                    <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    {{/if}}
+                    {{#if this.grade5}}
+                    <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                    {{/if}}
+                  </p>
+                </div>
+                <br>
+                <div class="typo-line">
+                  <p class="category">Comentário: </p>
+                  <blockquote>
+                    <p>
+                    {{this.comment}}
+                    </p>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+           {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+<script>
+  $(document).ready(function(){
+    Chartist.Pie('#chartAvaliacao', {
+      labels: [
+      {{#each dataReports.assessment.assessment}}
+        {{#if this}}'{{this}}%'{{else}}''{{/if}} ,
+      {{/each}}
+      ],
+      series: [
+      {{#each dataReports.assessment.assessment}}
+        {{#if this}}{{this}}{{else}}{{/if}} ,
+      {{/each}}
+      ]
+    });
+
+    var data = {
+      labels: [
+        {{#each dataReports.subscription}}
+          '{{this.EventId}} - {{this.nameEvent}}' ,
+        {{/each}}
+      ],
+      series: [
+        [
+          {{#each dataReports.subscription}}
+            {{#if this.bolLimitEvent}}{{this.limitEvent}}{{/if}},
+          {{/each}}
+        ],
+        [
+          {{#each dataReports.subscription}}
+            {{this.countSub}} ,
+          {{/each}}
+        ],
+        [
+          {{#each dataReports.subscription}}
+            {{this.countSubConf}} ,
+          {{/each}}
+        ],
+        [
+          {{#each dataReports.subscription}}
+            {{this.countPart}} ,
+          {{/each}}
+        ]
+      ]
+    };
+
+    var options = {
+        seriesBarDistance: 25,
+        axisX: {
+            showGrid: false
+        },
+        height: "300px",
+        plugins: [
+          Chartist.plugins.ctPointLabels({
+            textAnchor: 'middle'
+          })
+        ]
+    };
+
+    var responsiveOptions = [
+      ['screen and (max-width: 640px)', {
+        seriesBarDistance: 20,
+        axisX: {
+          labelInterpolationFnc: function (value) {
+            return value.substring(0, value.indexOf("-"));
+          }
+        },
+        axisY: {
+          onlyInteger: true,
+        }
+      }],
+      ['screen and (min-width: 640px)', {
+        axisY: {
+          onlyInteger: true,
+        }
+      }]
+    ];
+
+    Chartist.Bar('#chartSub', data, options, responsiveOptions);
+  });
+</script>

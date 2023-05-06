@@ -1,0 +1,74 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">Perfil</h2>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Nome</label><small>*</small>
+              <input required type="text" name="name" class="form-control" placeholder="Nome" value="{{profile.name}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Descrição</label><small>*</small>
+              <input required type="text" name="descritption" class="form-control" placeholder="Descrição" value="{{profile.descritption}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="header">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <h4 class="title ">Permissões</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="row">
+                  <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                      {{#each listPermission}}
+                      <li {{#if this.first}}class="active" {{/if}}><a data-toggle="tab"
+                          href="#{{this.name}}">{{this.descritption}}</a></li>
+                      {{/each}}
+                    </ul>
+                    <div class="tab-content">
+                      {{#each listPermission}}
+                      <div id="{{this.name}}" class="tab-pane fade {{#if this.first}} in active {{/if}}">
+                        <label class="checkbox-inline"><input disabled type="checkbox" {{#if this.checked.read}} checked {{/if}} name="permission[{{this.name}}][read]" value="true">Vizualizar</label>
+                        <label class="checkbox-inline"><input disabled type="checkbox" {{#if this.checked.create}} checked {{/if}} name="permission[{{this.name}}][create]" value="true">Criar</label>
+                        <label class="checkbox-inline"><input disabled type="checkbox" {{#if this.checked.update}} checked {{/if}} name="permission[{{this.name}}][update]" value="true">Editar</label>
+                        <label class="checkbox-inline"><input disabled type="checkbox" {{#if this.checked.delete}} checked {{/if}} name="permission[{{this.name}}][delete]" value="true">Excluir</label>
+                        <label class="checkbox-inline"><input disabled type="checkbox" {{#if this.checked.export}} checked {{/if}} name="permission[{{this.name}}][export]" value="true">Exportar</label>
+                      </div>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-xs-6 col-sm-3">
+              <a target="" href="{{route.route}}"><button type="button" class="btn btn-default btn-block">Voltar</button></a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

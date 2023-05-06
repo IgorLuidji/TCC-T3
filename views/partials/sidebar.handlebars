@@ -1,0 +1,58 @@
+<div class="sidebar" data-color="purple">
+  <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="/" class="simple-text">
+                Sistema de Eventos
+            </a>
+        </div>
+
+        <ul class="nav">
+            {{#if permission.congress.read}}
+            <li {{#if route.congress}} class="active" {{/if}}>
+                <a href="/congresso">
+                    <i class="pe-7s-culture"></i>
+                    <p>Congressos</p>
+                </a>
+            </li>
+            {{/if}}
+            {{#if permission.event.read}}
+            <li {{#if route.event}} class="active" {{/if}}>
+                <a href="/meus-eventos">
+                    <i class="pe-7s-display2"></i>
+                    <p>Meus Eventos</p>
+                </a>
+            </li>
+            {{/if}}
+            <li {{#if route.event_public}} class="active" {{/if}}>
+                <a href="/eventos">
+                    <i class="pe-7s-rocket"></i>
+                    <p>Eventos</p>
+                </a>
+            </li>
+            {{#if permission.reports.read}}
+            <li>
+                <a href="/relatorios">
+                    <i class="pe-7s-graph"></i>
+                    <p>Relatórios</p>
+                </a>
+            </li>
+            {{/if}}
+            {{#if permission.user.read}}
+            <li {{#if route.user}} class="active" {{/if}}>
+                <a href="/usuario">
+                    <i class="pe-7s-users"></i>
+                    <p>Usuários</p>
+                </a>
+            </li>
+            {{/if}}
+            {{#if permission.profile.read}}
+            <li {{#if route.profile}} class="active" {{/if}}>
+                <a href="/perfil">
+                    <i class="pe-7s-id"></i>
+                    <p>Perfis</p>
+                </a>
+            </li>
+            {{/if}}
+        </ul>
+  </div>
+</div>

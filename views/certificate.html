@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <style>
+    * {
+      text-align: center;
+      font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
+    }
+    h1 {
+      font-size: 40pt;
+    }
+    h2 {
+      font-size: 60pt;
+    }
+    p {
+      font-size: 20pt;
+    }
+    small{
+      font-size: 10pt;
+    }
+    .right{
+      text-align: right;
+    }
+    .left{
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h3 class="left">Sistema de eventos</h3>
+  <h1>Certificado</h1>
+  <p>Informamos que</p>
+  <h2>{{controller.user.firstName}} {{controller.user.lastName}}</h2>
+  <p>participou do evento "{{controller.eventData.name}}" de início ás "{{controller.eventData.date}}" e termino ás "{{controller.eventData.dateEnd}}" do congresso "{{controller.dataCongress.name}}".</p>
+  <p class="right"><small>Certificado gerado em: {{date}}</small></p>
+</body>
+</html>

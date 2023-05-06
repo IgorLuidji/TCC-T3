@@ -1,0 +1,102 @@
+<div class="col-md-10 col-md-push-1">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="title ">{{dataCongress.name}}:</h3>
+        </div>
+        <br>
+        <div class="col-md-12 text-center" style="margin-top: 1%;">
+          <h1 class="title">{{eventData.name}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Informações</h4>
+          </div>
+          <div class="content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-primary">
+                  <h4>Descrição </h4>
+                  <p>
+                    {{eventData.description}}
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-primary">
+                  <h4>Horários </h4>
+                  <p>
+                    Início: {{eventData.date}}
+                  </p>
+                  <p>
+                    Termino: {{eventData.dateEnd}}
+                  </p>
+                </div>
+              </div>
+              {{#if eventData.bol_local}}
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-primary">
+                  <h4>Local </h4>
+                  <p>
+                    {{eventData.local}}
+                  </p>
+                </div>
+              </div>
+              {{/if}}
+              {{#if eventData.bol_limit}}
+              <div class="col-md-12">
+                <div class="bs-callout bs-callout-primary">
+                  <h4>Vagas </h4>
+                  <p>
+                    {{eventData.limit}}
+                  </p>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-user">
+          <form >
+            <div class="row" >
+              <div class="col-md-12" style="margin-top: 5%;">
+                <div class="text-center">
+                  <h6>Quero fazer minha inscrição!</h6>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="col-lg-push-2 col-lg-8 text-center">
+                  {{#if eventData.close}}
+                  <button type="button" disabled class="btn btn-fill btn-block"><span>Incrições encerradas ☹️</span></button>
+                  
+                  {{else}}
+                  <a href="{{route.route}}/inscricao/{{eventData.id}}"><button type="button" class="btn btn-primary btn-fill btn-block"><span>Realizar Inscrição</span></button></a>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-lg-3">
+              <a target="" href="{{route.route}}/congresso/{{dataCongress.id}}"><button type="button" class="btn btn-default btn-block">Voltar página do congresso</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

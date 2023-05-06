@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      {{#if messages.message}}
+      <div class="col-md-12">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-danger" style="margin-bottom:0px;">
+                <span>{{messages.message}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{#if messages.message_sucess}}
+      <div class="col-md-12">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-success" style="margin-bottom:0px;">
+                <span>{{messages.message_sucess}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{#if message}}
+      <div class="col-md-12">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-danger" style="margin-bottom:0px;">
+                <span>{{message}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{{body}}}
+    </div>
+  </div>
+</div>

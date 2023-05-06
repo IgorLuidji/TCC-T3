@@ -1,0 +1,33 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">Excluir {{route.name}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form action="{{route.route}}/excluir" method="post">
+      <input type="hidden" name="id" value="{{congressData.id}}">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="typo-line">
+              <h4>Tem certeza que gostaria de deletar o congresso "{{congressData.name}}" ?<br><small class="text-danger">Essa ação não poderá ser revertida após confirmação.</small> </h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-xs-6 col-sm-3">
+              <a target="" href="{{route.route}}"><button type="button" class="btn btn-default btn-block">Cancelar</button></a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-push-6">
+              <button type="submit" class="btn btn-danger btn-fill btn-block">Exluir</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

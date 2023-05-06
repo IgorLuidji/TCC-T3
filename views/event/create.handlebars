@@ -1,0 +1,168 @@
+<style>
+  .modal-backdrop {
+    display: none;
+  }
+  .pe-7s-add-user, .pe-7s-user{
+    font-size: xxx-large;
+  }
+  .card-reposible {
+    border: #888888 solid 1px;
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: transparent;
+    font-weight: 400;
+    opacity: 0.8;
+    padding: 8px 16px;
+    border-color: #888888;
+    color: #888888;
+    max-width: 20%;
+    display: inline-block;
+    margin: 2px;
+    height: ;
+  }
+</style>
+<div class="col-md-12">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">Criar Eventos</h2>
+          <p class="category">Congresso: {{dataCongress.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form action="{{route.route}}/congresso/{{dataCongress.id}}/novo" method="post">
+        <input type="hidden" name="CongressId" value="{{dataCongress.id}}">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Nome do Evento</label><small>*</small>
+              <input required type="text" name="name" class="form-control" placeholder="Nome" value="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Horário de início <i title="O inicío do congresso será: {{dataCongress.date}}, utilize uma data igual ou superior." class="fa fa-question-circle" aria-hidden="true"></i></label>
+              <small>*</small>
+              <input required type="datetime-local" name="date" class="form-control" value="" onchange='onChangeDate();'>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Horário de Termino <i title="O termino do congresso será: {{dataCongress.dateEnd}}, utilize uma data inferior ou igual." class="fa fa-question-circle" aria-hidden="true"></i></label>
+              <small>*</small>
+              <input required type="datetime-local" name="dateEnd" class="form-control" value="" onchange='onChangeDate();'>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Terá Local? </label><br>
+              <label class="switch">
+                <input name="bol_local" type="checkbox" onchange='localChange(this);'>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="local" style="display: none;">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Local</label><small>*</small>
+              <textarea required rows="8" type="text" name="local" class="form-control" value="" disabled></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Descrição</label><small>*</small>
+              <textarea required rows="5" type="text" name="description" class="form-control" value=""></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Terá limite de vagas? </label><br>
+              <label class="switch">
+                <input name="bol_limit" type="checkbox" onchange='limitChange(this);'>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="limit" style="display: none;">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Vagas</label><small>*</small>
+              <input required type="number" min="0" name="limit" class="form-control" value="" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Responsáveis</label>
+              <div id="reponsibles" style="display: flex;">
+                <button type="button" class="btn btn-simple btn-lg" data-toggle="modal" data-target="#modalResponsaveis" title="Adicionar Responsável"><i class="pe-7s-add-user"></i></button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-xs-6 col-sm-3">
+              <a target="" href="{{route.route}}"><button type="button" class="btn btn-default btn-block">Cancelar</button></a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-push-6">
+              <button type="submit" class="btn btn-info btn-fill btn-block">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="modalResponsaveis" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Adicionar Responsável</h4>
+      </div>
+      <div class="modal-body">
+        <select class="form-control" id="responsavel">
+          <option value="">Selecione</option>
+        {{#each dataResponsible}}
+          <option value="{{this.id}}">{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
+        <button type="button" id="addResponsavel" class="btn btn-info btn-fill" data-dismiss="modal" style="display: none;">Adicionar</button>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/js/page/eventos.js" type="text/javascript"></script>
+
+<script>
+  let congressDate = "{{dataCongress.dateOrigin}}";
+  let congressDateEnd = "{{dataCongress.dateEndOrigin}}";
+</script>

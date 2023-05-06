@@ -1,0 +1,146 @@
+<style>
+  .modal-backdrop {
+    display: none;
+  }
+  .pe-7s-add-user, .pe-7s-user{
+    font-size: xxx-large;
+  }
+  .card-reposible {
+    border: #888888 solid 1px;
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: transparent;
+    font-weight: 400;
+    opacity: 0.8;
+    padding: 8px 16px;
+    border-color: #888888;
+    color: #888888;
+    max-width: 20%;
+    display: inline-block;
+    margin: 2px;
+    height: ;
+  }
+</style>
+<div class="col-md-12">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">Criar Eventos</h2>
+          <p class="category">Congresso: {{dataCongress.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Nome do Evento</label><small>*</small>
+              <input required type="text" name="name" class="form-control" placeholder="Nome" value="{{eventData.name}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Horário de início <i title="O inicío do congresso será: {{dataCongress.date}}, utilize uma data igual ou superior." class="fa fa-question-circle" aria-hidden="true"></i></label>
+              <small>*</small>
+              <input required type="datetime-local" name="date" class="form-control" value="{{eventData.date}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Horário de Termino <i title="O termino do congresso será: {{dataCongress.dateEnd}}, utilize uma data inferior ou igual." class="fa fa-question-circle" aria-hidden="true"></i></label>
+              <small>*</small>
+              <input required type="datetime-local" name="dateEnd" class="form-control" value="{{eventData.dateEnd}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Terá Local? </label><br>
+              <label class="switch">
+                <input name="bol_local" type="checkbox" {{#if eventData.bol_local}} checked {{/if}} disabled>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="local" style="{{#if eventData.bol_local}} {{else}} display: none; {{/if}}">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Local</label>
+              <textarea required rows="8" type="text" name="local" class="form-control" disabled>{{eventData.local}}</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Descrição</label><small>*</small>
+              <textarea required rows="5" type="text" name="description" class="form-control" disabled>{{eventData.description}}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Terá limite de vagas? </label><br>
+              <label class="switch">
+                <input name="bol_limit" type="checkbox" {{#if eventData.bol_limit}} checked {{/if}} disabled>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="limit" style="{{#if eventData.bol_limit}} {{else}} display: none; {{/if}}">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Vagas</label><small>*</small>
+              <input required type="number" min="0" name="limit" class="form-control" value="{{eventData.limit}}" disabled>
+            </div>
+          </div>
+        </div>
+        {{#if user.bolManager}}
+        {{else}}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Responsáveis</label>
+              <div id="reponsibles" style="display: flex;">
+                  {{#each responsibleData}}
+                  <div class="card-reposible">
+                    <button type="button" aria-hidden="true" class="close remove-reponsible">×</button>
+                    <span data-notify="icon" class="pe-7s-user"></span>
+                    <p class="text-" data-notify="message"> {{this.firstName}} {{this.lastName}}</p>
+                  </div>
+                  {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Página do evento:</label>
+              <a href="../eventos/congresso/{{dataCongress.id}}/pagina/{{eventData.id}}" target="_blank">Link</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-xs-6 col-sm-3">
+              <a target="" href="{{route.route}}"><button type="button" class="btn btn-default btn-block">Voltar</button></a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

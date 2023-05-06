@@ -1,0 +1,46 @@
+
+<div class="col-md-6 col-md-push-3">
+  <div class="card">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="title ">Login</h2>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form action="/login" method="post">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="exampleInputEmail1">E-mail</label>
+              <input required type="email" name="email" class="form-control" placeholder="E-mail">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Senha</label>
+              <input required type="password" name="password" class="form-control" placeholder="Senha">
+            </div>
+            <p class="card-category">
+              <a target="" href="/recuperar">Esqueceu a senha?</a>
+            </p>
+          </div>
+        </div>
+        <a href="/login-google"><button type="button" class="btn btn-fill btn-danger" title="Login com Google"><i class="fa fa-google" aria-hidden="true"></i></button></a>
+        <a href="/login-facebook"><button type="button" class="btn btn-fill btn-primary" title="Login com o Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></button></a>
+        <button type="submit" class="btn btn-info btn-fill pull-right">Entrar </button>
+        <div class="clearfix"></div>
+      </form>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <br>
+          <p>Ainda não possui uma conta?</p>
+          <a target="" href="/cadastro"><button class="btn btn-info btn-fill">Criar Conta</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
