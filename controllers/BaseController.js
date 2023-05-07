@@ -57,7 +57,12 @@ module.exports = class BaseController {
     let options = {
       format: "A4",
       orientation: "landscape",
-      border: "10mm"
+      border: "10mm",
+      childProcessOptions: {
+        env: {
+          OPENSSL_CONF: '/dev/null',
+        },
+      }
     };
 
     var document = {
