@@ -48,7 +48,6 @@ async function reports(codEventos, codEvent = false){
   if(codEvent){
     reports['comment'] = await reportsComment(codEvent);
   }
-  console.log(reports);
   return reports;
 }
 
@@ -105,7 +104,7 @@ async function reportsComment(codEvent){
   include: [
     [
       sequelize.literal(
-        `(SELECT CONCAT(firstName, ' ' ,lastName) FROM users as users WHERE users.id = Assessment.UserId)`
+        `(SELECT CONCAT(firstName, ' ' ,lastName) FROM Users as users WHERE users.id = Assessment.UserId)`
       ),
       "nameUser"
     ],
