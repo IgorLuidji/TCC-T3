@@ -48,6 +48,7 @@ async function reports(codEventos, codEvent = false){
   if(codEvent){
     reports['comment'] = await reportsComment(codEvent);
   }
+  console.log(reports);
   return reports;
 }
 
